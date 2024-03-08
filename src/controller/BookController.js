@@ -33,6 +33,8 @@ class BookController{
 
         res.status(200).json("Livro deletado")
     }
-    
+
 
 }
+
+module.exports = BookController
