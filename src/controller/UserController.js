@@ -7,8 +7,7 @@ class UserController{
         const user = {
             name,
             email,
-            fone,
-            quantidadeLivros: 0
+            fone
         }
         await knex("users").insert({name, email, fone})
 
@@ -43,3 +42,5 @@ class UserController{
         res.status(200).json("Usuário deletado")
     }
 }
+
+module.exports = UserController
