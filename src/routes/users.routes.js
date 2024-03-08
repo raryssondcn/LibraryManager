@@ -11,4 +11,4 @@ userRoutes.get("/users/:id", userController.listUsersById)
 userRoutes.put("/users/:id", userController.updateUser)
 userRoutes.delete("/users/:id", userController.deleteUser)
 
-module.exports = userController
+module.exports = userRoutes

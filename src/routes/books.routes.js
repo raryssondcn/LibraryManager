@@ -10,4 +10,4 @@ bookRoutes.get("/books", bookController.listBooks)
 bookRoutes.put("/books/:id", bookController.updateBook)
 bookRoutes.delete("/books/:id", bookController.deleteBook)
 
-module.exports = bookController
+module.exports = bookRoutes
