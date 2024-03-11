@@ -18,6 +18,13 @@ class BookController{
         const books = await knex("books")
         res.status(200).json(books)
     }
+
+    async listBooksById(req, res){
+        const {id} = req.params
+        const book = await knex("books").where({id})
+
+        res.status(200).json(book)
+    }
     async updateBook(req, res){
         const {id} = req.params
         const {title, author, category, pageNumber} = req.body

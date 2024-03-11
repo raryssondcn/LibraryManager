@@ -2,6 +2,7 @@ const knex = require("../database/knex")
 
 class UserController{
     async createUser(req, res){
+        const {bookId} = req.params
         const {name, email, fone} = req.body
 
         const user = {
@@ -12,7 +13,7 @@ class UserController{
             ownedBooks: 0
         }
         await knex("users").insert({name, email, fone})
-
+        user.ownedBooks++
         res.status(201).json(user)
     }
 
