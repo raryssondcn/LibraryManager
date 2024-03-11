@@ -2,11 +2,11 @@
 exports.up = (knex) => {
     return knex.schema.createTable("books", (table) => {
         table.increments('id').primary()
-        table.strings("title").notNullable()
-        table.strings("author").notNullable()
-        table.strings("category").notNullable()
-        table.strings("pageNumber").notNullable()
-        table.boolean("available").defaultTo(true)
+        table.string("title").notNullable()
+        table.string("author").notNullable()
+        table.string("category").notNullable()
+        table.string("pageNumber").notNullable()
+        table.boolean("available").defaultTo("true")
     })
   
 };

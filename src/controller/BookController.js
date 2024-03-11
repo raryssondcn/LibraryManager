@@ -11,7 +11,7 @@ class BookController{
             pageNumber,
             available: true    
         }
-        await knex("books").insert(title, author, category, pageNumber)
+        await knex("books").insert({title, author, category, pageNumber})
         res.status(201).json(book)
     }
     async listBooks(req, res){
@@ -22,7 +22,7 @@ class BookController{
         const {id} = req.params
         const {title, author, category, pageNumber} = req.body
 
-        await knex("books").where({id}).update(title, author, category, pageNumber)
+        await knex("books").where({id}).update({title, author, category, pageNumber})
 
         res.status(200).json("Livro Atualizado")
     }

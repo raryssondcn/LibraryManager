@@ -7,7 +7,9 @@ class UserController{
         const user = {
             name,
             email,
-            fone
+            fone,
+            bookId,
+            ownedBooks: 0
         }
         await knex("users").insert({name, email, fone})
 
