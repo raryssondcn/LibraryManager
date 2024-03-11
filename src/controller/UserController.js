@@ -2,18 +2,15 @@ const knex = require("../database/knex")
 
 class UserController{
     async createUser(req, res){
-        const {bookId} = req.params
         const {name, email, fone} = req.body
 
         const user = {
             name,
             email,
-            fone,
-            bookId,
-            ownedBooks: 0
+            fone
         }
         await knex("users").insert({name, email, fone})
-        user.ownedBooks++
+        
         res.status(201).json(user)
     }
 
@@ -44,6 +41,8 @@ class UserController{
 
         res.status(200).json("Usuário deletado")
     }
+
+    
 }
 
 module.exports = UserController

@@ -6,10 +6,10 @@ const userRoutes = Router()
 
 const userController = new UserController
 
-userRoutes.post("/users/:bookId", userController.createUser)
+userRoutes.post("/users/", userController.createUser)
 userRoutes.get("/users", userController.listUsers)
-userRoutes.get("/users/:id",checkUserExist, userController.listUsersById)
-userRoutes.put("/users/:id",checkUserExist, userController.updateUser)
-userRoutes.delete("/users/:id",checkUserExist, userController.deleteUser)
+userRoutes.get("/users/:id", checkUserExist, userController.listUsersById)
+userRoutes.put("/users/:id", checkUserExist, userController.updateUser)
+userRoutes.delete("/users/:id", checkUserExist, userController.deleteUser)
 
 module.exports = userRoutes

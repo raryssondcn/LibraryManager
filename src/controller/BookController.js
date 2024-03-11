@@ -41,6 +41,20 @@ class BookController{
         res.status(200).json("Livro deletado")
     }
 
+    async lendBook(req, res){
+        const {id} = req.params
+
+        await knex("books").where({id}).update({available: false})
+
+        res.status(201).json("Emprestado")
+    }
+    async returnBook(req, res){
+        const {id} = req.params
+
+        await knex("books").where({id}).update({available: true})
+
+        res.status(201).json("Devolvido")
+    }
 
 }
 
