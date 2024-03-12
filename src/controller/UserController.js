@@ -11,19 +11,19 @@ class UserController{
         }
         await knex("users").insert({name, email, fone})
         
-        res.status(201).json(user)
+        res.status(200).json(user)
     }
 
     async listUsers(req, res){
         const users = await knex ("users")
-        res.status(201).json(users)
+        res.status(200).json(users)
     }
 
     async listUsersById(req, res){
         const {id} = req.params
         const user = await knex ("users").where({id})
 
-        res.status(201).json(user)
+        res.status(200).json(user)
     }
 
     async updateUser(req, res){
@@ -32,16 +32,16 @@ class UserController{
 
         await knex("users").where({id}).update({name, email, password})
 
-        res.status(200).json("Usuario atualizado")
+        res.status(201).json("Usuario atualizado")
     } 
 
     async deleteUser(req, res){
         const {id} = req.params
         await knex("users").where({id}).delete()
 
-        res.status(200).json("Usuário deletado")
+        res.status(201).json("Usuário deletado")
     }
-    async lendBook(req, res){
+   /*  async lendBook(req, res){
         const {id} = req.params
         const {bookId} = req.params
         await knex("users").where({id})
@@ -57,7 +57,7 @@ class UserController{
         await knex("books").where({id: bookId}).update({available: true})
 
         res.status(201).json("Devolvido")
-    }
+    } */
 
     
 }

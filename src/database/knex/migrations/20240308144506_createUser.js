@@ -4,7 +4,7 @@ exports.up = (knex) => {
       table.string("name").notNullable()
       table.string("email").notNullable()
       table.string("fone").notNullable()
-      table.integer("bookId").unsigned().index().references("id").inTable("books")
+      //table.integer("bookId").unsigned().index().references("id").inTable("books")
       
     })
   };

@@ -8,11 +8,11 @@ class BookController{
             title,
             author,
             category,
-            pageNumber,
-            available: true    
+            pageNumber    
         }
         await knex("books").insert({title, author, category, pageNumber})
-        res.status(201).json(book)
+
+        res.status(200).json(book)
     }
     async listBooks(req, res){
         const books = await knex("books")
@@ -31,29 +31,14 @@ class BookController{
 
         await knex("books").where({id}).update({title, author, category, pageNumber})
 
-        res.status(200).json("Livro Atualizado")
+        res.status(201).json("Livro Atualizado")
     }
     async deleteBook(req, res){
         const {id} = req.params
         
         await knex("books").where({id}).delete()
 
-        res.status(200).json("Livro deletado")
-    }
-
-    async lendBook(req, res){
-        const {id} = req.params
-
-        await knex("books").where({id}).update({available: false})
-
-        res.status(201).json("Emprestado")
-    }
-    async returnBook(req, res){
-        const {id} = req.params
-
-        await knex("books").where({id}).update({available: true})
-
-        res.status(201).json("Devolvido")
+        res.status(201).json("Livro deletado")
     }
 
 }
