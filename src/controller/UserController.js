@@ -41,6 +41,23 @@ class UserController{
 
         res.status(200).json("Usuário deletado")
     }
+    async lendBook(req, res){
+        const {id} = req.params
+        const {bookId} = req.params
+        await knex("users").where({id})
+        await knex("books").where({id: bookId}).update({available: false})
+
+
+        res.status(201).json("Emprestado")
+    }
+    async returnBook(req, res){
+        const {id} = req.params
+        const {bookId} = req.params
+        await knex("users").where({id})
+        await knex("books").where({id: bookId}).update({available: true})
+
+        res.status(201).json("Devolvido")
+    }
 
     
 }

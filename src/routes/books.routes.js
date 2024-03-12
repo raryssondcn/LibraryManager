@@ -11,7 +11,5 @@ bookRoutes.get("/books", bookController.listBooks)
 bookRoutes.get("/books/:id", checkBookExist, bookController.listBooksById)
 bookRoutes.put("/books/:id", checkBookExist, bookController.updateBook)
 bookRoutes.delete("/books/:id", checkBookExist, bookController.deleteBook)
-bookRoutes.patch("/books/:id", checkBookExist, bookController.lendBook)
-bookRoutes.patch("/books/:id", checkBookExist, bookController.returnBook)
 
 module.exports = bookRoutes

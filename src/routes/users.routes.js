@@ -6,10 +6,12 @@ const userRoutes = Router()
 
 const userController = new UserController
 
-userRoutes.post("/users/", userController.createUser)
+userRoutes.post("/users", userController.createUser)
 userRoutes.get("/users", userController.listUsers)
 userRoutes.get("/users/:id", checkUserExist, userController.listUsersById)
 userRoutes.put("/users/:id", checkUserExist, userController.updateUser)
 userRoutes.delete("/users/:id", checkUserExist, userController.deleteUser)
+userRoutes.patch("/users/:id/:bookId", checkUserExist, userController.lendBook)
+userRoutes.patch("/user/:id/:bookId", checkUserExist, userController.returnBook)
 
 module.exports = userRoutes
