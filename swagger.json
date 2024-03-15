@@ -67,9 +67,162 @@
                         }
                     }
                 }
+            },
+            "get": {
+                "tags": ["users"],
+                "summary": "Usuarios",
+                "description": "Listar todos os usuários",
+                "responses": {
+                    "200":{
+                        "description": "Operação realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type":"object",
+                                    "items": {
+                                        "$ref": "#components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description": "Erro ao listar"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Atualizar Usuário",
+                "description": "Atualizar os dados de um usuário ja existente",
+                "requestBody":{
+                    "description": "Inserir dados que deseja atualizar",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Atualizado com sucesso"
+                    }
+                }
+            },
+            "delete":{
+            "tags": ["users"],
+            "summary": "Deletar Usuário",
+            "description": "Deleta um usuario a partir do ID",
+            "parameters": [{
+                "name": "api_key",
+                "in": "header",
+                "description": "",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "userID",
+                "in": "path",
+                "description": "Deleta um usuario a partir do ID",
+                "schema":{
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        ],
+        "responses":{
+            "400":{
+                "description": "Não foi possivel deletar"
             }
         }
-    },
+    }
+        },
+        "/users/FindById": {
+            "get":{
+                "tags":["users"],
+                "summary": "UsuarioID",
+                "description": "Identificar um usuario pelo ID",
+                "parameters": [{
+                    "name": "userID",
+                    "in": "path",
+                    "description": "Retorna ID do usuário",
+                    "schema":{
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }],
+                "responses":{
+                    "200":{
+                        "description": "Operação realizada com sucesso",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#components/schemas/User"
+                                }
+                            }
+
+                        }
+                    },
+                    "400":{
+                        "description": "Id invalido"
+                    },
+                    "404": {
+                        "description": "Usuario não encontrado"
+                    }
+                }
+            }
+        },
+        "/books": {
+            "post": {
+                "tags": ["books"],
+                "summary": "Novo Livro",
+                "description": "Cadastra um novo Livro a partir das informações básicas",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#components/schemas/User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value":{
+                                        "title": "O pequeno Principe",
+                                        "author": "Antoine the Saint",
+                                        "category": "Novela",
+                                        "pageNumber": "254"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Livro já cadastrado"
+                    },
+                       "200": {
+                        "description": "Livro cadastrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#components/schemas/User"
+                                        }
+                                    }
+                                } 
+                            
+                            }
+                        }
+                    }
+                }
+        }
+},
     "components": {
         "schemas": {
             "User": {
